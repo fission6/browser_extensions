@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>global</title>
+<script type="text/javascript">
+var newTab;
+var newImage;
+var canvas;
+var context;
+var imageData;
+
+function performCommand(event)
+{
+    if (event.command === "start-eyedropper") {
+   	newTab = safari.application.activeBrowserWindow.activeTab; //Get Active Tab
+    newImage = newTab.visibleContentsAsDataURL(); //Get Base64-PNG Data URL
+	image = new Image();
+	image.src = newImage;
+	image.onload = function() {
+	    canvas = document.createElement('canvas');
+	    canvas.width = image.width;
+	    canvas.height = image.height;
+	    context = canvas.getContext('2d');
+	    context.drawImage(image, 0, 0);
+	    imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+	    safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("imageData", imageData);
+			};
+	safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("showBox", "");
+		}
+	}
+function validateCommand(event)
+{
+    if (event.command === "start-eyedropper") {
+        // Disable the button if there is no URL loaded in the tab.
+        event.target.disabled = !event.target.browserWindow.activeTab.url;
+    }
+}
+
+// register with application:
+safari.application.addEventListener("command", performCommand, false);
+safari.application.addEventListener("validate", validateCommand, false);
+// recieve messages from injected script
+
+</script>
+</head>
+<body onload=""></body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "Copy Tab URL",
+  "description": "Adds a context menu item to copy the current URL tab.",
+  "version": "0.1",
+  "icons": {
+     "128": "icon128.png",
+     "16": "icon16.png",
+     "48": "icon48.png"
+  },
+  "permissions": ["contextMenus",
+  				  "tabs"],
+  "background_page": "background.html"
+}

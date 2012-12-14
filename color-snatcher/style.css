@@ -1,0 +1,21 @@
+#bcolorbox19234735
+{
+	height: 25px !important;
+	width: 25px !important;
+	background-color: black;
+	position: fixed !important;
+	left:0px !important;
+	bottom:0px !important;
+	border: 1px solid black !important;
+	display: none;
+	z-index: 9999999999 !important
+}
+#bcolorbox19234735text
+{
+	position: inherit !important;
+	left: 30px !important;
+	bottom: 5px !important;
+	opacity: 80% !important;
+	background-color: white !important;
+	margin: 0 !important
+}

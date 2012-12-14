@@ -1,0 +1,23 @@
+{
+  "name": "Improved PT",
+  "description": "Improving your PT viewing. Finds all links to images and videos on PT and embeds them in the page.",
+  "version": "1.9.6",
+  "permissions": ["http://*.phantasytour.com/*",
+  								"contextMenus",
+  								"tabs"],
+  "icons": { "16": "16.png",
+             "48": "48.png",
+            "128": "128.png" },
+  "content_scripts": [
+      {
+        "matches": ["http://*.phantasytour.com/*posts*"],
+        "js": ["jquery.js", "sample.js"]
+      },
+      {
+      	"matches": ["http://*.phantasytour.com/*topics", "http://*.phantasytour.com/*?mode=my_threads"],
+      	"js": ["jquery.js", "index.js"]
+      }
+    ],
+  "options_page": "options.html",
+  "background_page": "background.html"
+  }
